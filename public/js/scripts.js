@@ -86,9 +86,6 @@ const createDeck = async ({selector, path, flipped}) => {
   cards.forEach((card, index) => container.append(createCard(card, (index < flipped))))
 }
 
-const onClickElementByID = (id, callback) => {
-  document.getElementById(id).addEventListener('click', callback)
-} 
 
 
 
@@ -110,52 +107,47 @@ window.addEventListener('load', () => {
       flipped: cardSize     
     });
 
-    document.getElementById('flip-cards').addEventListener('click', () => {
-
-      document.querySelectorAll('.deck.hand .card').forEach((element) => {
-        element.classList.remove('flipped');
+    const onClickElementByID = (id, callback) => {
+      return document.getElementById(id).addEventListener('click', callback)
+    } 
+    
+    
+    onClickElementByID('flip-cards', () => {
+      document.querySelectorAll('.deck.hand .card')
+      .forEach((element, index) => {
+        setTimeout(() => {
+          console.log(element)
+          element.classList.remove('flipped')
+        }, (200 * (index)))
       })
-
+    })
+    
+    
+    const postRequest = (body) => {
+      return {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    }
+    
+    onClickElementByID('button-user-name', async () => {
+      console.log('This works!');
+      const { value } = document.getElementById('user-name');
+      const userResponse = await (await fetch('/set-user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          user: value
+        })
+      })).json();
+      console.log('response', userResponse)
     })
 
     
   })()
 
-})
-
-
-
-
-const postRequest = (body) => {
-  return {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }
-}
-
-onClickElementByID('flip-cards', () => {
-  document.querySelectorAll('.deck.hand .card')
-    .forEach((element, index) => {
-      setTimeout(() => {
-        element.classList.remove('flipped')
-      }, (300 * (index)))
-    })
-})
-
-
-
-('button-user-name', async () => {
-  const { value } = document.getElementById('user-name');
-  const userResponse = await (await fetch('/set-user', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      user: value
-    })
-  })).json();
-  console.log('response', userResponse)
 })

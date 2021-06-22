@@ -1,27 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Viga&display=swap');
 body {
+    width: 50vw;
     font-family: 'M PLUS Rounded 1c';
     background-color: #ddd;
-    margin: 0px auto;
+    padding: 0 25vw;
 }
 
 .card {
+    transition: transform 1s ease-out;
     cursor: pointer;
     user-select: none;
-    background: linear-gradient(35deg, #e7e7e7 0%, white 100%);
-    border: 1px solid #eee;
-    border-radius: 13px;
     margin: 15px;
-    width: 100px;
-    height: 150px;
     display: inline-block;
     position: relative;
     color: #138;
-    box-shadow: 3px 3px 8px 2px #0002, 1px 1px 2px 1px #1234;
 }
 
 .card .container {
+    width: 100px;
+    height: 150px;
     transform-origin: center left;
+    background: linear-gradient(35deg, #e7e7e7 0%, white 100%);
+    border: 1px solid #eee;
+    border-radius: 13px;
+    box-shadow: 3px 3px 8px 2px #0002, 1px 1px 2px 1px #1234;
 }
 
 .symbols+.card-corner {
@@ -32,12 +34,17 @@ body {
 }
 
 .card.flipped .container {
+    transition: transform 1s ease-out;
     transform-origin: 50px 50px;
-    transform: rotateY(0.5turn) translateX(-100%);
+    transform: rotateY(0.5turn);
     backface-visibility: hidden;
 }
 
 .flipped {
+    transform: rotateY(0.5turn);
+    transform-origin: 50px 50px;
+    transition: transform 1s ease-out;
+    border-radius: 13px;
     background: url('/images/cards-back.png');
     background-position: -10px -10px;
     background-size: 120px;
@@ -78,6 +85,8 @@ body {
 }
 
 .card[number="A"] .symbols div {
+    width: 100px;
+    height: 150px;
     font-size: 60px;
     top: 30px;
 }

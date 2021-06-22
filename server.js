@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 var path = require('path')
 const port = 8080
 
 app.use('/', express.static(path.join(__dirname, 'public')))
 app.use(express.json())
+app.use(cors());
 
 const { Deck, Hand } = require('./app/deck');
 

@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
+var path = require('path')
 const port = 8080
 
-app.use(express.static('public'));
+app.use('/', express.static(path.join(__dirname, 'public')))
 app.use(express.json())
 
 const { Deck, Hand } = require('./app/deck');
@@ -10,6 +11,8 @@ const { Deck, Hand } = require('./app/deck');
 const deck = new Deck();
 
 let table = deck.dispatchCards(5);
+// let table = deck.cards;
+
 
 app.get('/table', (req, res) => {
     res.send(table);

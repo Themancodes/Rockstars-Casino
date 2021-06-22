@@ -103,7 +103,7 @@ window.addEventListener('load', () => {
       flipped: 2
     });
     
-    const cardSize = 5;
+    const cardSize = 2;
     await createDeck({
       selector: '.deck.hand',
       path: `/deck/${cardSize}`,
@@ -159,18 +159,3 @@ onClickElementByID('flip-cards', () => {
   })).json();
   console.log('response', userResponse)
 })
-
-
-
-
-// (async () => {
-//   const deck = await (await fetch('/table')).json();
-//   const container = document.querySelector('.deck.hand');
-
-//   deck.forEach((card) => {
-//       const number = card.slice(0, -1);
-//       const symbol = card.slice(-1);
-
-//       container.append(createCard(number, symbol))
-//   });
-// })();

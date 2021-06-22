@@ -2,9 +2,12 @@
 body {
     font-family: 'M PLUS Rounded 1c';
     background-color: #ddd;
+    margin: 0px auto;
 }
 
 .card {
+    cursor: pointer;
+    user-select: none;
     background: linear-gradient(35deg, #e7e7e7 0%, white 100%);
     border: 1px solid #eee;
     border-radius: 13px;
@@ -15,6 +18,30 @@ body {
     position: relative;
     color: #138;
     box-shadow: 3px 3px 8px 2px #0002, 1px 1px 2px 1px #1234;
+}
+
+.card .container {
+    transform-origin: center left;
+}
+
+.symbols+.card-corner {
+    bottom: 0;
+    right: 0;
+    text-align: left;
+    transform: rotate(180deg);
+}
+
+.card.flipped .container {
+    transform-origin: 50px 50px;
+    transform: rotateY(0.5turn) translateX(-100%);
+    backface-visibility: hidden;
+}
+
+.flipped {
+    background: url('/images/cards-back.png');
+    background-position: -10px -10px;
+    background-size: 120px;
+    background-repeat: no-repeat;
 }
 
 .card[symbol="♦"],
@@ -36,17 +63,8 @@ body {
     text-align: center;
     line-height: 12px;
     position: absolute;
-}
-
-.top-left {
     top: 0px;
     left: 0px;
-}
-
-.bottom-right {
-    right: 0px;
-    bottom: 0px;
-    transform: rotate(0.5turn);
 }
 
 .symbols {
@@ -59,9 +77,132 @@ body {
     font-size: 24px;
 }
 
+.card[number="A"] .symbols div {
+    font-size: 60px;
+    top: 30px;
+}
+
+.card[number="J"].card[symbol="♦"] .container .front {
+    width: 100px;
+    height: 150px;
+    background: url('/images/cards-front.png');
+    background-position: -5px -3px;
+    background-size: 410px;
+    background-repeat: no-repeat;
+}
+
+.card[number="J"].card[symbol="♥"] .container .front {
+    width: 100px;
+    height: 150px;
+    background: url('/images/cards-front.png');
+    background-position: -105px -3px;
+    background-size: 410px;
+    background-repeat: no-repeat;
+}
+
+.card[number="J"].card[symbol="♠"] .container .front {
+    width: 100px;
+    height: 150px;
+    background: url('/images/cards-front.png');
+    background-position: -205px -3px;
+    background-size: 410px;
+    background-repeat: no-repeat;
+}
+
+
+/* ♦ ♥ ♠ ♣ */
+
+.card[number="J"].card[symbol="♣"] .container .front {
+    width: 100px;
+    height: 150px;
+    background: url('/images/cards-front.png');
+    background-position: -305px -3px;
+    background-size: 410px;
+    background-repeat: no-repeat;
+}
+
+.card[number="Q"].card[symbol="♦"] .container .front {
+    width: 100px;
+    height: 150px;
+    background: url('/images/cards-front.png');
+    background-position: -5px -147px;
+    background-size: 410px;
+    background-repeat: no-repeat;
+}
+
+.card[number="Q"].card[symbol="♥"] .container .front {
+    width: 100px;
+    height: 150px;
+    background: url('/images/cards-front.png');
+    background-position: -105px -147px;
+    background-size: 410px;
+    background-repeat: no-repeat;
+}
+
+.card[number="Q"].card[symbol="♠"] .container .front {
+    width: 100px;
+    height: 150px;
+    background: url('/images/cards-front.png');
+    background-position: -205px -147px;
+    background-size: 410px;
+    background-repeat: no-repeat;
+}
+
+
+/* ♦ ♥ ♠ ♣ */
+
+.card[number="Q"].card[symbol="♣"] .container .front {
+    width: 100px;
+    height: 150px;
+    background: url('/images/cards-front.png');
+    background-position: -305px -147px;
+    background-size: 410px;
+    background-repeat: no-repeat;
+}
+
+.card[number="K"].card[symbol="♦"] .container .front {
+    width: 100px;
+    height: 150px;
+    background: url('/images/cards-front.png');
+    background-position: -5px -295px;
+    background-size: 410px;
+    background-repeat: no-repeat;
+}
+
+.card[number="K"].card[symbol="♥"] .container .front {
+    width: 100px;
+    height: 150px;
+    background: url('/images/cards-front.png');
+    background-position: -105px -295px;
+    background-size: 410px;
+    background-repeat: no-repeat;
+}
+
+.card[number="K"].card[symbol="♠"] .container .front {
+    width: 100px;
+    height: 150px;
+    background: url('/images/cards-front.png');
+    background-position: -205px -295px;
+    background-size: 410px;
+    background-repeat: no-repeat;
+}
+
+
+/* ♦ ♥ ♠ ♣ */
+
+.card[number="K"].card[symbol="♣"] .container .front {
+    width: 100px;
+    height: 150px;
+    background: url('/images/cards-front.png');
+    background-position: -305px -295px;
+    background-size: 410px;
+    background-repeat: no-repeat;
+}
+
 
 /* Center-X */
 
+.card[number="A"] .symbols div,
 .card[number="2"] .symbols div,
 .card[number="3"] .symbols div,
 .card[number="5"] .symbols div:nth-child(5),
@@ -100,16 +241,16 @@ body {
 
 .card[number="8"] .symbols div:nth-child(8) {
     bottom: 38px;
-    transform: translateX(-50%) rotate(180deg);
-}
-
-.card[number="10"] .symbols div:nth-child(10) {
-    top: 33px;
+    transform: translateX(-50%) translateY(150px) rotate(180deg);
 }
 
 .card[number="10"] .symbols div:nth-child(9) {
     bottom: 33px;
-    transform: translateX(-50%) rotate(180deg)
+    transform: translateX(-50%) translateY(150px) rotate(180deg)
+}
+
+.card[number="10"] .symbols div:nth-child(10) {
+    top: 33px;
 }
 
 .card[number="9"] .symbols div:nth-child(2),
@@ -124,7 +265,7 @@ body {
 .card[number="10"] .symbols div:nth-child(3),
 .card[number="10"] .symbols div:nth-child(7) {
     bottom: 45px;
-    transform: rotate(180deg)
+    transform: rotate(180deg) translateY(-150px);
 }
 
 
@@ -167,13 +308,13 @@ body {
 .card[number="10"] .symbols div:nth-child(4),
 .card[number="10"] .symbols div:nth-child(8) {
     bottom: 20px;
-    transform: rotate(180deg);
+    transform: rotate(180deg) translateY(-150px);
 }
 
 .card[number="2"] .symbols div:nth-child(2),
 .card[number="3"] .symbols div:nth-child(3) {
     bottom: 20px;
-    transform: translateX(-50%) rotate(180deg)
+    transform: translateX(-50%) rotate(180deg) translateY(-150px)
 }
 
 

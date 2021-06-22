@@ -5,6 +5,10 @@ class Deck {
     cards = [];
 
     constructor() {
+        this.shuffleCards()
+    }
+
+    shuffleCards() {
         this.suits.forEach(suit => {
             this.numbers.forEach(face => {
                 this.cards.push(face + suit);
@@ -14,10 +18,15 @@ class Deck {
 
     dispatchCards(size) {
         const cards = new Array(parseInt(size)).fill('')
-        return cards.map(() => {
-            const index = parseInt(Math.random() * this.cards.length)
-            return this.cards.splice(index, 1)[0]
-        }).filter(Boolean)
+
+        if (this.cards.length <= 0) {
+            return this.shuffleCards()
+        } else {
+            return cards.map(() => {
+                const index = parseInt(Math.random() * this.cards.length)
+                return this.cards.splice(index, 1)[0]
+            }).filter(Boolean)
+        }
     }
 }
 

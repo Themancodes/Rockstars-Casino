@@ -1,7 +1,7 @@
 # Rockstars-Casino
 
-[Rockstars Casino!](https://postimg.cc/4KY8Nb95)
-# A poker app to be playable by any number of people connected to the same network - sort of.
+[![Screenshot-20210706-103459.png](https://i.postimg.cc/bvT4gmYK/Screenshot-20210706-103459.png)](https://postimg.cc/4KY8Nb95)
+#### A poker app to be playable by any number of people connected to the same network - sort of.
 
 ### To run this code
 
